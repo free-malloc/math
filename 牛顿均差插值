@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int a[1010][1010];      // 其中系数依次等于a[0][0], a[1][1], ... , a[n-1][n-1]
+int f[1010];              //  f[i]<=>a[i][i]
+int x[1010];             //  指数
+
+int main(void)
+{
+        for (int i = 0; i <= n; i++)
+                x[i] = i;                       //  指数初始化
+        for (int i = 0; i < n; i++)
+                for (int j = 0; j <= i; j++)
+                        a[i][j] = j ? (a[i][j-1]-a[i-1][j-1] / (x[i]-x[i-j])) : f[x[i]];
+        int P = 0;      //  结果P(x)
+        for (int i = 0; i < n; i++)
+                P += a[i][i];
+        return 0;
+}
